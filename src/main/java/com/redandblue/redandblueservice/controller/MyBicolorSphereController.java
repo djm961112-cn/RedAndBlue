@@ -48,6 +48,7 @@ public class MyBicolorSphereController {
     public Response<?> getTheLatestRecommendationNumber() {
         analysisThirdPartyResult.analysisThirdPartyResults();//获得并存储最新二色球体
         analysisBicolorSphere.anBicolorSphere();//运行红色区域最新组合权重
+        //
         return Response.success();
     }
 
