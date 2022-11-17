@@ -26,4 +26,29 @@ public class MyBicolorSphereService implements MyBicolorSphereDto {
     public List<Long> findIdByCode(MyBicolorSphere myBicolorSphere){
         return myBicolorSphereDto.findIdByCode(myBicolorSphere);
     }
+
+    @Override
+    public List<MyBicolorSphere> findNotStatisticalCombination(String code){
+        return myBicolorSphereDto.findNotStatisticalCombination(code);
+    }
+
+    @Override
+    public String findLastStatisticsCode(){
+        return myBicolorSphereDto.findLastStatisticsCode();
+    }
+
+    @Override
+    public void setLastNewCode(MyBicolorSphere myBicolorSphere){
+        myBicolorSphereDto.setLastNewCode(myBicolorSphere);
+    }
+
+    @Override
+    public int getBicolorSphereCount(){
+        return myBicolorSphereDto.getBicolorSphereCount();
+    }
+
+    @Override
+    public MyBicolorSphere findNewMyBicolorSphere(){
+        return myBicolorSphereDto.findNewMyBicolorSphere();
+    }
 }

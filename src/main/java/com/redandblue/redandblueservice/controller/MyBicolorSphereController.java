@@ -1,7 +1,5 @@
 package com.redandblue.redandblueservice.controller;
 
-import com.redandblue.redandblueservice.entity.myBicolorSphere.GroupRate;
-import com.redandblue.redandblueservice.entity.myBicolorSphere.MyBicolorSphere;
 import com.redandblue.redandblueservice.entity.response.controller.Response;
 import com.redandblue.redandblueservice.service.GroupRateService;
 import com.redandblue.redandblueservice.util.AnalysisBicolorSphere;
@@ -13,18 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-
 /**
  * dengjinming
- * 2022/11/10
+ * 2022/11/17
  */
 @RestController
 @Slf4j
-@RequestMapping(value = "/test")
-public class test {
-
+@RequestMapping(value = "/myBicolorSphere")
+public class MyBicolorSphereController {
     @Autowired
     GetNewRedAndBlue getNewRedAndBlue;
     @Autowired
