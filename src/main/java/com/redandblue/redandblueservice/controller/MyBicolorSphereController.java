@@ -46,12 +46,13 @@ public class MyBicolorSphereController {
      */
     @RequestMapping(value = "/getTheLatestRecommendationNumber",method = RequestMethod.GET)
     public Response<?> getTheLatestRecommendationNumber() {
-
+        analysisThirdPartyResult.analysisThirdPartyResults();//获得并存储最新二色球体
+        analysisBicolorSphere.anBicolorSphere();//运行红色区域最新组合权重
         return Response.success();
     }
 
     /**
-     * 运行最新组合权重
+     * 运行红色区域最新组合权重
      *
      * @return {@link Response}<{@link ?}>
      */

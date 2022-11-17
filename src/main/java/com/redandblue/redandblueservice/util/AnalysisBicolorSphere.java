@@ -31,9 +31,9 @@ public class AnalysisBicolorSphere {
     GroupRateService groupRateService;
 
     /**
-     * 分析双色球数据主方法，主要计算新增加的双色球数据红色部分所属区域，及该区域在历史上出现的频率                           
+     * 分析双色球数据主方法，主要计算新增加的双色球数据红色部分所属区域，及该区域在历史上出现的频率
      */
-    @Transactional
+    @Transactional(rollbackFor=Exception.class)
     public void anBicolorSphere(){
         String code= myBicolorSphereService.findLastStatisticsCode();//获取上次统计的最新的code
         List<MyBicolorSphere> myBicolorSphereList =myBicolorSphereService.findNotStatisticalCombination(code);//获取本次需要统计的双色球数据
