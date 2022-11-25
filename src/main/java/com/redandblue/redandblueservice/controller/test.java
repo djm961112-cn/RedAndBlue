@@ -63,7 +63,7 @@ public class test {
      */
     @RequestMapping(value = "/runLatestGroupRate",method = RequestMethod.GET)
     public Response<?> runLatestGroupRate() {
-        analysisBicolorSphere.anBicolorSphere();
+        analysisBicolorSphere.anyBicolorSphere();
         return Response.success();
     }
 }

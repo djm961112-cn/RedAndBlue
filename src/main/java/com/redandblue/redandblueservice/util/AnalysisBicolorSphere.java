@@ -34,11 +34,14 @@ public class AnalysisBicolorSphere {
      * 分析双色球数据主方法，主要计算新增加的双色球数据红色部分所属区域，及该区域在历史上出现的频率
      */
     @Transactional(rollbackFor=Exception.class)
-    public void anBicolorSphere(){
+    public void anyBicolorSphere(){
         String code= myBicolorSphereService.findLastStatisticsCode();//获取上次统计的最新的code
         List<MyBicolorSphere> myBicolorSphereList =myBicolorSphereService.findNotStatisticalCombination(code);//获取本次需要统计的双色球数据
+        //List<MyBicolorSphere> tenBicolorSphereList=myBicolorSphereService.findTenBicolorSphere();//获取最新的十组数据
         List<Integer> integerList = new ArrayList<>();
+        //List<Integer> tenIntegerList=new ArrayList<>();//TODO:近十组数据的概率未完成
         int allNum=myBicolorSphereService.getBicolorSphereCount();//获取最新的双色球期数
+        //int ten=10;
         for (MyBicolorSphere myBicolorSphere : myBicolorSphereList){
             integerList=StringToList(myBicolorSphere.red);
             //System.out.println("integerList"+integerList);
@@ -49,9 +52,7 @@ public class AnalysisBicolorSphere {
             //调用dto接口将该区域的对应次数+1，出现频率重新计算
             int num=groupRate.getHappenNum()+1;//对应code出现次数+1
             groupRate.setHappenNum(num);
-            BigDecimal Bnum= BigDecimal.valueOf(num);
-            BigDecimal BallNum= BigDecimal.valueOf(allNum);
-            BigDecimal allHappenRate= Bnum.divide(BallNum,4,BigDecimal.ROUND_HALF_UP);//出现频率重新计算
+            BigDecimal allHappenRate= IntDivideToBigDecimal(num,allNum,4);//出现频率重新计算
             groupRate.setAllHappenRate(allHappenRate);
             //System.out.println(groupRate);
             //最后将次数和总频率重新存储到数据库
@@ -71,6 +72,27 @@ public class AnalysisBicolorSphere {
         MyBicolorSphere myBicolorSphere=new MyBicolorSphere();
         myBicolorSphere.setCode(theLastNewCode);
         myBicolorSphereService.setLastNewCode(myBicolorSphere);
+    }
+
+//    public void computeRate(List<MyBicolorSphere> myBicolorSphereList,int sum){
+//        List<Integer> integerList = new ArrayList<>();
+//        for (MyBicolorSphere myBicolorSphere : myBicolorSphereList){
+//
+//        }
+//    }
+
+    /**
+     * int相除
+     *
+     * @param numOne num1
+     * @param numTwo num2
+     * @param scale  小数位数
+     * @return {@link BigDecimal}
+     */
+    public BigDecimal IntDivideToBigDecimal(int numOne,int numTwo,int scale){
+        BigDecimal numOneBig=BigDecimal.valueOf(numOne);
+        BigDecimal numTwoBig=BigDecimal.valueOf(numTwo);
+        return numOneBig.divide(numTwoBig,scale,BigDecimal.ROUND_HALF_UP);
     }
 
     /**

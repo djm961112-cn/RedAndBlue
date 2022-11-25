@@ -33,6 +33,11 @@ public class MyBicolorSphereService implements MyBicolorSphereDto {
     }
 
     @Override
+    public List<MyBicolorSphere> findTenBicolorSphere(){
+        return myBicolorSphereDto.findTenBicolorSphere();
+    }
+
+    @Override
     public String findLastStatisticsCode(){
         return myBicolorSphereDto.findLastStatisticsCode();
     }

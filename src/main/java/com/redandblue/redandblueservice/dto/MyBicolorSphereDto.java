@@ -46,6 +46,14 @@ public interface MyBicolorSphereDto {
     List<MyBicolorSphere> findNotStatisticalCombination(@Param("code") String code);
 
     /**
+     * 找到最新的十组组合
+     *
+     * @return {@link List}<{@link MyBicolorSphere}>
+     */
+    @Select(value = "SELECT * FROM bicolor_sphere ORDER BY `code` DESC LIMIT 10;")
+    List<MyBicolorSphere> findTenBicolorSphere();
+
+    /**
      * 找到上次统计的code
      *
      * @return {@link String}

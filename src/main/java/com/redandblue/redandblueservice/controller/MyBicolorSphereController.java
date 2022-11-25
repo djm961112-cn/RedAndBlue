@@ -47,7 +47,7 @@ public class MyBicolorSphereController {
     @RequestMapping(value = "/getTheLatestRecommendationNumber",method = RequestMethod.GET)
     public Response<?> getTheLatestRecommendationNumber() {
         analysisThirdPartyResult.analysisThirdPartyResults();//获得并存储最新二色球体
-        analysisBicolorSphere.anBicolorSphere();//运行红色区域最新组合权重
+        analysisBicolorSphere.anyBicolorSphere();//运行红色区域最新组合权重
         //
         return Response.success();
     }
@@ -59,7 +59,7 @@ public class MyBicolorSphereController {
      */
     @RequestMapping(value = "/runLatestGroupRate",method = RequestMethod.GET)
     public Response<?> runLatestGroupRate() {
-        analysisBicolorSphere.anBicolorSphere();
+        analysisBicolorSphere.anyBicolorSphere();
         return Response.success();
     }
 }
